@@ -4,23 +4,17 @@ import {
   Input,
   Output,
   AfterViewInit,
-  ViewChild,
   ViewEncapsulation,
   ElementRef,
   Renderer2,
 } from '@angular/core';
 
-import { Platform } from 'ionic-angular';
-
 @Component({
   selector: 'ion-marquee',
   template: `
-    <div><ng-content></ng-content></div>
+      <ng-content></ng-content>
   `,
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    /** COMPONENT_STYLE */
-  ],
 })
 export class IonMarquee implements AfterViewInit {
   _direction: string;
@@ -56,8 +50,8 @@ export class IonMarquee implements AfterViewInit {
     this.renderer.setStyle(nativeElement, 'overflow', 'hidden');
     this.renderer.setStyle(nativeElement, 'height', '24px');
     this.renderer.setStyle(innerBlock, 'position', 'absolute');
-    this.element.nativeElement.innerHTML = '';
-    this.renderer.appendChild(this.element.nativeElement, innerBlock);
+    nativeElement.innerHTML = '';
+    this.renderer.appendChild(nativeElement, innerBlock);
 
     if (innerBlock.offsetWidth <= nativeElement.offsetWidth) {
       return;
@@ -77,28 +71,29 @@ export class IonMarquee implements AfterViewInit {
   }
 
   scrollVertical() {
+    const nativeElement = this.element.nativeElement;
     const iBox = document.createElement('div');
     this.renderer.setStyle(iBox, 'width', '100%');
     this.renderer.setStyle(iBox, 'width', '100%');
-    this.renderer.setStyle(iBox, 'overflow', 'overflow');
+    this.renderer.setStyle(iBox, 'overflow', 'hidden');
     this.renderer.setAttribute(iBox, 'id', 'marqueeBoxA');
-    iBox.innerHTML = this.element.nativeElement.innerHTML;
+    iBox.innerHTML = nativeElement.innerHTML;
 
     const iBox2 = iBox.cloneNode(true);
     this.renderer.setAttribute(iBox2, 'id', 'marqueeBoxB');
 
-    this.element.nativeElement.innerHTML = '';
-    this.renderer.appendChild(this.element.nativeElement, iBox);
-    this.renderer.appendChild(this.element.nativeElement, iBox2);
+    nativeElement.innerHTML = '';
+    this.renderer.appendChild(nativeElement, iBox);
+    this.renderer.appendChild(nativeElement, iBox2);
 
+    this.renderer.setStyle(nativeElement, 'display', 'block');
+    this.renderer.setStyle(nativeElement, 'overflow', 'hidden');
     this.timer = setInterval(() => {
-      const nativeElement = this.element.nativeElement;
       if (nativeElement.clientHeight - nativeElement.scrollTop <= 0) {
         nativeElement.scrollTop =
           nativeElement.offsetHeight - nativeElement.scrollTop + 1;
       } else {
         nativeElement.scrollTop++;
-        console.log(nativeElement.offsetHeight, nativeElement.scrollTop);
       }
     }, this.speed);
   }

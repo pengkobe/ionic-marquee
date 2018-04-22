@@ -6,16 +6,17 @@
 
 <ion-content>
 
-
   <ion-list-header>
     scroll horizontal
   </ion-list-header>
-  <ion-marquee [speed]="30">dssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</ion-marquee>
+  <ion-marquee [speed]="30">
+    this is the text to show scroll horizontal, and default is scroll horizontal. you don't need to set the direction
+  </ion-marquee>
 
   <ion-list-header>
     scroll vertical
   </ion-list-header>
-  <!-- <ion-marquee [speed]="30" [direction]="direction">
+  <ion-marquee [speed]="30" [direction]="direction" style="height:122px">
     <ul>
       <li>1</li>
       <li>2</li>
@@ -24,6 +25,6 @@
       <li>5</li>
       <li>6</li>
     </ul>
-  </ion-marquee> -->
+  </ion-marquee>
 
 </ion-content>
