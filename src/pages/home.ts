@@ -6,5 +6,6 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
+  direction = 'vertical';
   constructor(public navCtrl: NavController) {}
 }

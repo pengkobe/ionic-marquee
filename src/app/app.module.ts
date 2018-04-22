@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { IonTagsInputModule } from "../ion-marquee";
+import { IonMarqueeModule } from "../ion-marquee";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { IonTagsInputModule } from "../ion-marquee";
     HomePage,
   ],
   imports: [
-    IonTagsInputModule,
+    IonMarqueeModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
