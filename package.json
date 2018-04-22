@@ -1,7 +1,7 @@
 {
   "name": "ionic-marquee",
   "version": "0.0.1",
-  "description": "A ionic tags input components",
+  "description": "A ionic components for marquee effect",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "dependencies": {},
