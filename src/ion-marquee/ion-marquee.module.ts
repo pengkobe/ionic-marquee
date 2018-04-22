@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { IonMarquee } from './ion-marquee';
-import { IonTag } from './ion-tag';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
