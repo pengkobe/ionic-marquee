@@ -1,9 +1,11 @@
 # ionic-marquee
 [![Dependency Status](https://david-dm.org/pengkobe/ionic-marquee.svg)](https://david-dm.org/pengkobe/ionic-marquee)
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url] [![MIT License][license-image]][license-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url] [![MIT License][license-image]][license-url]  
+
 [![NPM](https://nodei.co/npm/ionic-marquee.png?downloads=true&stars=true)](https://nodei.co/npm/ionic-marquee/)  
 
 marquee effect for ionic
+> I am working on it right now. it may not function very well 
 
 ## Install
 
