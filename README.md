@@ -1,11 +1,13 @@
 # ionic-marquee
-[![Dependency Status](https://david-dm.org/pengkobe/ionic-marquee.svg)](https://david-dm.org/pengkobe/ionic-marquee)
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url] [![MIT License][license-image]][license-url]  
 
-[![NPM](https://nodei.co/npm/ionic-marquee.png?downloads=true&stars=true)](https://nodei.co/npm/ionic-marquee/)  
+[![Dependency Status](https://david-dm.org/pengkobe/ionic-marquee.svg)](https://david-dm.org/pengkobe/ionic-marquee)
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url] [![MIT License][license-image]][license-url]
+
+[![NPM](https://nodei.co/npm/ionic-marquee.png?downloads=true&stars=true)](https://nodei.co/npm/ionic-marquee/)
 
 marquee effect for ionic
-> I am working on it right now. it may not function very well 
+
+> I am working on it right now. it may not function very well
 
 ## Install
 
@@ -35,8 +37,8 @@ export class AppModule {}
 ### Horizontal Animation
 
 ```html
-<ion-marquee [speed]="30" >
-    Text you want to apply the animation. attention: if the text not long enough it won't be work!
+<ion-marquee [speed]="30" style="height: 24px">
+  this is the text to show scroll horizontal, and default is scroll horizontal. you don't need to set the direction
 </ion-marquee>
 ```
 
@@ -75,12 +77,9 @@ export class YourPage {
 
 MIT@[yipeng.info](https://yipeng.info)
 
-
 [npm-url]: https://www.npmjs.com/package/ionic-marquee
 [npm-image]: https://img.shields.io/npm/v/ionic-marquee.svg
-
 [downloads-image]: https://img.shields.io/npm/dm/ionic-marquee.svg
 [downloads-url]: http://badge.fury.io/js/ionic-marquee
-
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE

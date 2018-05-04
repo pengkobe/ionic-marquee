@@ -48,7 +48,6 @@ export class IonMarquee implements AfterViewInit {
     this.renderer.setStyle(nativeElement, 'word-break', 'keep-all');
     this.renderer.setStyle(nativeElement, 'white-space', 'nowrap');
     this.renderer.setStyle(nativeElement, 'overflow', 'hidden');
-    this.renderer.setStyle(nativeElement, 'height', '24px');
     this.renderer.setStyle(innerBlock, 'position', 'absolute');
     nativeElement.innerHTML = '';
     this.renderer.appendChild(nativeElement, innerBlock);
