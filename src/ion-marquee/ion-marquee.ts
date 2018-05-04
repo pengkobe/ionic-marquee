@@ -18,9 +18,19 @@ import {
 })
 export class IonMarquee implements AfterViewInit {
   _direction: string;
-  timer: any;
-
+  _text: string;
+  _timer: any;
+ 
   @Input() speed: any;
+
+  // only support horizontal scroll
+  @Input()
+  set text(val) {
+    this._text = val;
+    if (this.direction !== 'vertical') {
+      this.scrollHorizontal();
+    }
+  }
 
   @Input()
   get direction(): any {
@@ -30,7 +40,48 @@ export class IonMarquee implements AfterViewInit {
     this._direction = val;
   }
 
-  constructor(private element: ElementRef, private renderer: Renderer2) {}
+  constructor(private element: ElementRef, private renderer: Renderer2) {
+    if (!String.prototype.repeat) {
+      String.prototype.repeat = function(count) {
+        'use strict';
+        if (this == null) {
+          throw new TypeError("can't convert " + this + ' to object');
+        }
+        let str = '' + this;
+        count = +count;
+        if (count != count) {
+          count = 0;
+        }
+        if (count < 0) {
+          throw new RangeError('repeat count must be non-negative');
+        }
+        if (count == Infinity) {
+          throw new RangeError('repeat count must be less than infinity');
+        }
+        count = Math.floor(count);
+        if (str.length == 0 || count == 0) {
+          return '';
+        }
+        if (str.length * count >= 1 << 28) {
+          throw new RangeError(
+            'repeat count must not overflow maximum string size'
+          );
+        }
+        let rpt = '';
+        for (;;) {
+          if ((count & 1) == 1) {
+            rpt += str;
+          }
+          count >>>= 1;
+          if (count == 0) {
+            break;
+          }
+          str += str;
+        }
+        return rpt;
+      };
+    }
+  }
 
   ngAfterViewInit(): void {
     if (this.direction === 'vertical') {
@@ -43,8 +94,8 @@ export class IonMarquee implements AfterViewInit {
   scrollHorizontal() {
     const nativeElement = this.element.nativeElement;
     const innerBlock = document.createElement('div');
-    innerBlock.innerHTML = nativeElement.innerText;
-    this.renderer.setStyle(nativeElement, 'display', 'block'); // 内联对象需加
+    innerBlock.innerHTML = this._text;
+    this.renderer.setStyle(nativeElement, 'display', 'block'); // for inline elements
     this.renderer.setStyle(nativeElement, 'word-break', 'keep-all');
     this.renderer.setStyle(nativeElement, 'white-space', 'nowrap');
     this.renderer.setStyle(nativeElement, 'overflow', 'hidden');
@@ -56,10 +107,10 @@ export class IonMarquee implements AfterViewInit {
       return;
     }
 
-    innerBlock.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    innerBlock.innerHTML += '&nbsp;'.repeat(5);
     innerBlock.innerHTML += innerBlock.innerHTML;
 
-    this.timer = setInterval(function() {
+    this._timer = setInterval(function() {
       innerBlock.style.left = innerBlock.offsetLeft - 1 + 'px';
       if (innerBlock.offsetLeft < -innerBlock.offsetWidth / 2) {
         innerBlock.style.left = '0';
@@ -87,7 +138,7 @@ export class IonMarquee implements AfterViewInit {
 
     this.renderer.setStyle(nativeElement, 'display', 'block');
     this.renderer.setStyle(nativeElement, 'overflow', 'hidden');
-    this.timer = setInterval(() => {
+    this._timer = setInterval(() => {
       if (nativeElement.clientHeight - nativeElement.scrollTop <= 0) {
         nativeElement.scrollTop =
           nativeElement.offsetHeight - nativeElement.scrollTop + 1;
@@ -98,6 +149,6 @@ export class IonMarquee implements AfterViewInit {
   }
 
   stop() {
-    clearInterval(this.timer);
+    clearInterval(this._timer);
   }
 }

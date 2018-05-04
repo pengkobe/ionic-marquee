@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>ion-marquee demo</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,14 +9,13 @@
   <ion-list-header>
     scroll horizontal
   </ion-list-header>
-  <ion-marquee [speed]="30" style="height: 24px">
-    this is the text to show scroll horizontal, and default is scroll horizontal. you don't need to set the direction
+  <ion-marquee speed="30" style="height: 24px" [text]="horizontalText">
   </ion-marquee>
 
   <ion-list-header>
     scroll vertical
   </ion-list-header>
-  <ion-marquee [speed]="30" [direction]="direction" style="height:122px">
+  <ion-marquee speed="30" [direction]="direction" style="height:122px">
     <ul>
       <li>1</li>
       <li>2</li>

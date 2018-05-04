@@ -7,8 +7,6 @@
 
 marquee effect for ionic
 
-> I am working on it right now. it may not function very well
-
 ## Install
 
 `npm install ionic-marquee --save`
@@ -35,11 +33,25 @@ export class AppModule {}
 ## Example
 
 ### Horizontal Animation
+> Only support inline text scroll
+```typescript
+export class YourPage implements OnInit {
+  horizontalText = `this is the text to show scroll horizontal, 
+  and default is scroll horizontal. you don't need to set the direction`;
+  constructor(public navCtrl: NavController) {}
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.horizontalText = `this is the text to show that text could be refreshed. 
+      but this feature support horizontal scroll only!`;
+    }, 5000);
+  }
+}
+```
 
 ```html
-<ion-marquee [speed]="30" style="height: 24px">
-  this is the text to show scroll horizontal, and default is scroll horizontal. you don't need to set the direction
-</ion-marquee>
+  <ion-marquee speed="30" style="height: 24px" [text]="horizontalText">
+  </ion-marquee>
 ```
 
 ### Vertical Animation
@@ -72,6 +84,7 @@ export class YourPage {
 | --------- | ------ | -------------------------------------------------------------------------------- |
 | speed     | Number | the animation speed                                                              |
 | direction | String | the animation direction. default is `horizontal`. you can also set to `vertical` |
+| text      | String | horizontal scroll text                                                           |
 
 ## Lincese
 
