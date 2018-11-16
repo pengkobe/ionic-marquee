@@ -1,8 +1,6 @@
 import {
   Component,
-  ChangeDetectorRef,
   Input,
-  Output,
   AfterViewInit,
   ViewEncapsulation,
   ElementRef,
