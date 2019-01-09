@@ -27,6 +27,8 @@ export class IonMarquee implements AfterViewInit {
     this._text = val;
     if (this.direction !== 'vertical') {
       this.scrollHorizontal();
+    }else{
+      this.scrollVertical();
     }
   }
 
